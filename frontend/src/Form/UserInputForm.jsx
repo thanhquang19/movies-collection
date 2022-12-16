@@ -62,11 +62,12 @@ export default function UserInputForm(props) {
 
             <label for='input-poster'>Poster</label>
             <input ref={poster} type='text' className='inputField' id='input-poster'></input>   
+           
             <br/> 
 
             <button className='buttonGroup' id='find' onClick={handleFind}>Find Movies</button>
             <button className='buttonGroup' id='add-new' onClick= {handleAddNew}>Add New Movie</button>
-            <button className='buttonGroup' id='update' onClick= {()=>{}}>Update</button>
+            
         </form>
    
   )
