@@ -3,7 +3,7 @@ import React from 'react'
 export default function MovieCard(props) {
     const movieInfo = props.movieInfo;
   return (
-    <div>
+    <div id = 'movie-card'>
         <img id='poster' src={movieInfo.poster}alt='poster' img/>
         <h3 id='title'>{movieInfo.title}</h3>
         <p id='director'>{movieInfo.director}</p>

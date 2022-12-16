@@ -12,7 +12,7 @@ Modal.setAppElement('#root');
 
 function App() {
     const [moviesToDislay, getMoviesToDisplay] = useState([]);
-    const [isModalOpen, getIsModalOpen] = useState(true);
+    // const [isModalOpen, getIsModalOpen] = useState(true);
 
     const findMovies = async (title, director, cast, year, rating, poster) => {
         const searchParam = new URLSearchParams();
@@ -65,7 +65,7 @@ function App() {
     <div>
       <UserInputForm findMovies = {findMovies} addNewMovie = {addNewMovie}/>
       <DisplayPanel movies = {moviesToDislay}/>
-      <MovieModal isModalOpen={isModalOpen}/>
+      
     </div>
   )
 }
