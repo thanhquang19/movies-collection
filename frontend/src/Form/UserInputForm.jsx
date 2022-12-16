@@ -13,7 +13,13 @@ export default function UserInputForm(props) {
 
   const handleFind = (e) => {
     e.preventDefault();
-    props.findMovies();
+    props.findMovies(
+      title.current.value,
+      director.current.value,
+      cast.current.value,
+      year.current.value,
+      rating.current.value
+    );
   };
 
   const handleAddNew = (e) => {

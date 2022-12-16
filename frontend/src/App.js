@@ -3,19 +3,27 @@ import './App.css';
 import UserInputForm from './Form/UserInputForm';
 import DisplayPanel from './Display/DisplayPanel';
 import { useState } from 'react';
- 
- 
+import Modal from 'react-modal';
+import MovieModal from './MovieModal/MovieModal';
 
+ 
+ 
+Modal.setAppElement('#root');
 
 function App() {
-  const [moviesToDislay, getMoviesToDisplay] = useState([]);
+    const [moviesToDislay, getMoviesToDisplay] = useState([]);
+    const [isModalOpen, getIsModalOpen] = useState(true);
 
     const findMovies = async (title, director, cast, year, rating, poster) => {
-        const criteria = {
-            text: 'text'
-        }
+        const searchParam = new URLSearchParams();
+        if(title) searchParam.append('title', title);
+        if(director) searchParam.append('director', director);
+        if(cast) searchParam.append('cast', cast);
+        if(year) searchParam.append('year', year);
+        if(rating) searchParam.append('rating', rating);
         
-        const movies = await fetch(`http://localhost:4001/movies?${JSON.stringify(criteria)}`, {
+        console.log(searchParam.toString())
+        const movies = await fetch(`http://localhost:4001/movies?${searchParam.toString()}`, {
             method: 'GET',
              
             headers: {
@@ -51,11 +59,13 @@ function App() {
 
     }
 
+
  
   return (
     <div>
       <UserInputForm findMovies = {findMovies} addNewMovie = {addNewMovie}/>
       <DisplayPanel movies = {moviesToDislay}/>
+      <MovieModal isModalOpen={isModalOpen}/>
     </div>
   )
 }

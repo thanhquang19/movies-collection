@@ -24,9 +24,9 @@ const connectToDatabase = async () => {
 server.get('/movies', async (req, res, next)=> {
     console.log(`${req.method} received to search movies`);
     connectToDatabase();
-    console.log(req.params);
+    console.log(req.query);
     const moviesCollection = cluster.db('movies').collection('movies');
-    const movies = await moviesCollection.find().toArray();
+    const movies = await moviesCollection.find(req.query).toArray();
     console.log(movies);
     res.send(movies);
 })
