@@ -25,9 +25,14 @@ server.get('/movies', async (req, res, next)=> {
     console.log(`${req.method} received to search movies`);
     connectToDatabase();
     console.log(req.query);
+
+    const searchTarget = {
+        title: {$regex: new RegExp(req.query.title, 'i')} //case insensitive
+    }
+    
     const moviesCollection = cluster.db('movies').collection('movies');
-    const movies = await moviesCollection.find(req.query).toArray();
-    console.log(movies);
+    const movies = await moviesCollection.find(searchTarget).toArray();
+   
     res.send(movies);
 })
 

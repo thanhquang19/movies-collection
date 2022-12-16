@@ -21,10 +21,10 @@ export default function MovieModal(props) {
         {movieInfo._id}
         <img alt='poster' src={movieInfo.poster}></img>
         <br></br>
-        <input ref={director} type='text' value={movieInfo.director}></input>
-        <input ref={cast} type='text' value={movieInfo.cast? movieInfo.cast.join(', '): "tba"}></input>
-        <input ref={year} type='text' value={movieInfo.year}></input>
-        <input ref={rating} type='text' id='rating' value={movieInfo.rating? movieInfo.rating.$numberDecimal: 'tba'}></input>
+        <input ref={director} type='text' defaultValue={movieInfo.director}></input>
+        <input ref={cast} type='text' defaultValue={movieInfo.cast? movieInfo.cast.join(', '): "tba"}></input>
+        <input ref={year} type='text' defaultValue={movieInfo.year}></input>
+        <input ref={rating} type='text' id='rating' defaultValue={movieInfo.rating? movieInfo.rating: 'tba'}></input>
 
         <br></br>
 

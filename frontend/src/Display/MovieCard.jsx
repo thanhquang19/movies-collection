@@ -25,7 +25,7 @@ export default function MovieCard(props) {
         <p id='director'>{movieInfo.director}</p>
         <p id='cast'>{movieInfo.cast? movieInfo.cast.join(', '): "tba"}</p>
         <p id='year'>{movieInfo.year}</p>
-        <p id='rating'>{movieInfo.rating? movieInfo.rating.$numberDecimal: 'tba'}</p>
+        <p id='rating'>{movieInfo.rating? movieInfo.rating: 'tba'}</p>
         
       </div>
       <MovieModal isModalOpen={isModalOpen} movieInfo={movieInfo} closeModal={closeModal}/>
