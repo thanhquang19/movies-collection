@@ -26,10 +26,31 @@ server.get('/movies', async (req, res, next)=> {
     connectToDatabase();
     console.log(req.query);
 
-    const searchTarget = {
-        title: {$regex: new RegExp(req.query.title, 'i')} //case insensitive
+    const searchTarget = {};
+
+    if(req.query.hasOwnProperty('title')) {
+        searchTarget.title = {$regex: new RegExp(req.query.title, 'i')}
+    }; //case insensitiven)
+    
+    if(req.query.hasOwnProperty('director')) {
+        searchTarget.director =  {$all: req.query.director.split(', ')} ;
     }
     
+    if(req.query.hasOwnProperty('cast')) {
+        searchTarget.cast =  {$all: req.query.cast.split(', ')} ;
+    }
+
+    if(req.query.hasOwnProperty('year')) {
+        searchTarget.year =  req.query.year ;
+    }
+
+    
+    if(req.query.hasOwnProperty('rating')) {
+        searchTarget.rating = {$gte: req.query.rating};
+    }
+
+    console.log(searchTarget);
+
     const moviesCollection = cluster.db('movies').collection('movies');
     const movies = await moviesCollection.find(searchTarget).toArray();
    

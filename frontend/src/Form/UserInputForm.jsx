@@ -28,7 +28,7 @@ export default function UserInputForm(props) {
 
     props.addNewMovie(
       title.current.value,
-      director.current.value,
+      director.current.value.split(', '),
       cast.current.value.split(', '),
       year.current.value,
       rating.current.value,
