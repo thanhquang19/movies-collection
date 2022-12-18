@@ -1,6 +1,7 @@
 import {React, useState} from 'react'
 import Modal from 'react-modal';
 import MovieModal from '../MovieModal/MovieModal';
+import './MovieCard.css';
 
 
 Modal.setAppElement('#root');

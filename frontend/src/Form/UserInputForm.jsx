@@ -39,7 +39,7 @@ export default function UserInputForm(props) {
   return (
     
         <form className='inputForm' id='inputForm'>
-            <h1> Input Form</h1>
+            <h1>Movie Collection</h1>
             <label for='input-title'>Title</label>
             <input ref= {title}type='text' className='inputField' id='input-title'></input>   
             <br/> 

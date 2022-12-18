@@ -1,0 +1,13 @@
+#display-panel {
+    border: green 2px solid;
+    /* display: flex;
+    gap: 5px;
+    text-align: center;
+    flex-flow: row wrap;
+    justify-content: space-around; */
+
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    gap: 10px;
+
+}

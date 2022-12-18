@@ -1,5 +1,6 @@
 import React from 'react'
 import MovieCard from './MovieCard'
+import './DisplayPanel.css';
 
 
 export default function DisplayPanel(props) {
@@ -7,20 +8,18 @@ export default function DisplayPanel(props) {
   const movies = props.movies; 
   
   return (
-    movies.length > 0?  (
+
+   <>
+    <h2>Search Results</h2>
     <div id='display-panel'>
-          <h1>Display Panel</h1>
-        {
-          movies.map(movie => <MovieCard movieInfo={movie}/>)
-        }
-        
-        
-       
-    </div>
-    ) :    (
-    <div id='display-panel'>
-    <h1>Display Panel</h1>
-    No Matches
-    </div>  )
-  )
+          
+          {
+            movies.length > 0?
+            movies.map(movie => <MovieCard movieInfo={movie}/>) :
+            <p>No Movies Found</p>
+          }        
+    </div> 
+   </> 
+  
+)
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient} = require('mongodb');
+const { MongoClient, ObjectId} = require('mongodb');
 
 const server = express(); 
 server.use(cors());
@@ -71,6 +71,24 @@ server.post('/movies', async (req, res, next) => {
     res.send(addedMovie);
 })
 
+server.put('/movies/:_id', async (req, res, next) => {
+    console.log(`${req.method} to update a movie received`);
+    console.log(req.params._id);
+    console.log(req.body);
+    connectToDatabase();
+    const moviesCollection = cluster.db('movies').collection('movies');
+    const _id = new ObjectId(req.params._id);
+    try {
+        await moviesCollection.updateOne({_id: _id}, {$set:req.body})
+        const movieWithUpdateInfo = await moviesCollection.findOne({_id:_id});
+        console.log(movieWithUpdateInfo);
+        res.send(movieWithUpdateInfo);
+    } catch(err) {
+        res.status(404).send();
+    }
+   
+
+})
 server.listen(PORT, ()=> {
     console.log(`server is listening on PORT: ${PORT}`);
 })
