@@ -29,6 +29,10 @@ export default function MovieModal(props) {
 
     getMovieInfo(updatedMovieInfo);
 
+    props.closeModal(); // close the modal
+
+    // fetch the updated movie to the main page and notification that update successfully
+
   }
 
   
